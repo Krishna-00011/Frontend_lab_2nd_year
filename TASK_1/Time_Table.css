@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f5f9;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #1e293b;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th,
+td {
+    border: 2px solid #abf056;
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #0ae051;
+    color: white;
+}
+
+td {
+    color: #1e293b;
+}
+
+td:first-child {
+    font-weight: bold;
+    background-color: #dbeafe;
+}
+
+tr:hover {
+    background-color: #f1f5f9;
+}
