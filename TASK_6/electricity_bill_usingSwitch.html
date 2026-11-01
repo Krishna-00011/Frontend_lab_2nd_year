@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let category = prompt("Enter category (Domestic/Commercial/Industrial):");
+        let units = Number(prompt("Enter number of units consumed:"));
+
+        let bill = 0;
+        switch (category) {
+            case "Domestic":
+                bill = units * 5;
+                break;
+            case "Commercial":
+                bill = units * 8;
+                break;
+            case "Industrial":
+                bill = units * 10;
+                break;
+            default:
+                console.log("Invalid category");
+        }
+        console.log("Electricity bill = Rs." + bill);
+    </script>
+</body>
+
+</html>
