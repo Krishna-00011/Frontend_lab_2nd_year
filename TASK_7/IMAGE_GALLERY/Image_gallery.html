@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interactive Image Gallery</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #bdc3d1;
+            margin-bottom: 30px;
+        }
+
+        .gallery {
+            background: rgba(255,255,255,0.08);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.005);
+        }
+
+        .heading {
+            margin: 25px 0 15px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .thumbnails img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .thumbnails img:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            border-color: #a78bfa;
+        }
+
+        .thumbnails img.active {
+            opacity: 1;
+            border-color: #a78bfa;
+            box-shadow: 0 0 15px #a78bfa77;
+        }
+
+        footer {
+            margin-top: 25px;
+            color: #bdc3d1;
+            font-size: 13px;
+        }
+
+        @media(max-width: 600px) {
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .main-image {
+                height: 280px;
+            }
+
+            .thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .thumbnails img {
+                height: 100px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📸 Explore The Gallery</h1>
+
+        <p class="subtitle">
+            Discover beautiful moments through pictures.
+        </p>
+
+
+        <div class="gallery">
+
+            <!-- Main Image -->
+
+            <img
+                id="mainImage"
+                class="main-image"
+                src="https://picsum.photos/id/1015/900/500"
+                alt="Mountain View"
+            >
+
+
+            <h3 class="heading">
+                ✨ Beautiful Moments
+            </h3>
+
+
+            <!-- Thumbnail Images -->
+
+            <div class="thumbnails">
+
+                <img
+                    src="https://picsum.photos/id/1015/900/500"
+                    alt="Mountain View"
+                    class="active"
+                >
+
+                <img
+                    src="https://picsum.photos/id/1016/900/500"
+                    alt="Forest"
+                >
+
+                <img
+                    src="https://picsum.photos/id/1018/900/500"
+                    alt="Nature"
+                >
+
+                <img
+                    src="https://picsum.photos/id/1020/900/500"
+                    alt="Landscape"
+                >
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Designed with ❤️ | Interactive Image Gallery
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        // Select main image
+
+        let mainImage = document.getElementById("mainImage");
+
+
+        // Select all thumbnail images
+
+        let thumbnails = document.querySelectorAll(".thumbnails img");
+
+
+        // Add click event listener to every thumbnail
+
+        thumbnails.forEach(function(image) {
+
+            image.addEventListener("click", function() {
+
+
+                // Add fade effect
+
+                mainImage.style.opacity = "0.3";
+
+
+                setTimeout(function() {
+
+                    // Change main image
+
+                    mainImage.src = image.src;
+
+                    mainImage.alt = image.alt;
+
+                    mainImage.style.opacity = "1";
+
+                }, 150);
+
+
+                // Remove active class from all images
+
+                thumbnails.forEach(function(img) {
+
+                    img.classList.remove("active");
+
+                });
+
+
+                // Highlight selected thumbnail
+
+                image.classList.add("active");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
